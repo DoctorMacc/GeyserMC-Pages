@@ -1,0 +1,536 @@
+{"0": {
+    "doc": "Info",
+    "title": "Info",
+    "content": " ",
+    "url": "/GeyserMC-Pages/development/Info",
+    "relUrl": "/development/Info"
+  },"1": {
+    "doc": "Info",
+    "title": "Compiling",
+    "content": ". | Clone the repo to your computer (EG: git clone https://github.com/GeyserMC/Geyser.git) | Install Maven | Navigate to the Geyser root directory and run git submodule update --init --recursive. This downloads all the needed submodules for Geyser and is a crucial step in this process. | Run mvn clean install and locate to the bootstrap, then your desired Geyser version, then target folder. | . ",
+    "url": "/GeyserMC-Pages/development/Info#compiling",
+    "relUrl": "/development/Info#compiling"
+  },"2": {
+    "doc": "Info",
+    "title": "Project layout",
+    "content": ". | bootstrap is where we hold the specific platform code. So if you’re porting Geyser to a new platform, you likely want to be in here. | common is where some data types are and other parts used in other plugins such as Floodgate. | connector is where connections are handled and the data conversion is done. If adding in some new packet conversions you likely want to be in here. | . ",
+    "url": "/GeyserMC-Pages/development/Info#project-layout",
+    "relUrl": "/development/Info#project-layout"
+  },"3": {
+    "doc": "Commands and Permissions",
+    "title": "Commands and Permissions",
+    "content": "| Command | Permission | Description | . | geyser dump | geyser.command.dump | Dumps Geyser debug information for bug reports. | . | geyser help or geyser ? | geyser.command.help | Shows help for all registered commands. | . | geyser list | geyser.command.list | List all players connected through Geyser. | . | geyser offhand | geyser.command.offhand | Puts an items in your offhand. | . | geyser reload | geyser.command.reload | Reloads the Geyser configurations. Kicks all players when used! | . | geyser shutdown or geyser stop | geyser.command.shutdown | Shuts down Geyser. | . | geyser version | geyser.command.version | Shows the current Geyser version and checks for updates. | . ",
+    "url": "/GeyserMC-Pages/geyser/commands",
+    "relUrl": "/geyser/commands"
+  },"4": {
+    "doc": "Commands and Permissions",
+    "title": "Commands and Permissions",
+    "content": "| Command | Permission | Description | . | linkaccount | N/A | Links a Bedrock and Java account. | . | unlinkaccount | N/A | Removes the link between a Bedrock and Java account. | . ",
+    "url": "/GeyserMC-Pages/floodgate/commands",
+    "relUrl": "/floodgate/commands"
+  },"5": {
+    "doc": "Config",
+    "title": "Config",
+    "content": "This page covers basic information about the Geyser config and what each option does. Though they are explained in the configuration itself, this explains what each option does in more detail. ",
+    "url": "/GeyserMC-Pages/geyser/config",
+    "relUrl": "/geyser/config"
+  },"6": {
+    "doc": "Config",
+    "title": "Bedrock Section",
+    "content": "The options for Geyser on the bedrock-facing end. Mostly contains options for how bedrock edition will see the server. address: The address of Geyser on the bedrock end. In most all scenarios, this should not need to be changed. port: The port Geyser will run on. By default, it is 19132 in bedrock. motd1: The first line of the MOTD for Geyser. motd2: The second line of the MOTD for Geyser. Please keep in mind, this option will only work if Geyser is shown in the Friends tab! . ",
+    "url": "/GeyserMC-Pages/geyser/config#bedrock-section",
+    "relUrl": "/geyser/config#bedrock-section"
+  },"7": {
+    "doc": "Config",
+    "title": "Remote Section",
+    "content": "Options for the remote (java) server. The following two configuration options do not generally apply for plugin versions as the plugin handles connecting to the running server. address: The address of the Minecraft: Java Edition server you want to join. port: The port of the Minecraft: Java Edition server you specified in the address section. auth-type: The authentication type of the Minecraft: Java Edition server. Valid options are online, offline, and floodgate. Please keep in mind, what you specify in the Geyser auth-type option MUST be the same as what the remote server has (with the exception of Geyser being in online mode and remote being in offline mode). You simply cannot join an online mode server without a genuine account. If you want to allow Minecraft: Bedrock Edition accounts to join without a Minecraft: Java Edition account, see the Floodgate page. ",
+    "url": "/GeyserMC-Pages/geyser/config#remote-section",
+    "relUrl": "/geyser/config#remote-section"
+  },"8": {
+    "doc": "Config",
+    "title": "General Options",
+    "content": "General Geyser options that are mostly specific to Geyser itself. floodgate-key-file: The key file path for Floodgate. Requires that you have Floodgate installed and the auth-type set to floodgate. userAuths: A section where you can put the authentication information for your Minecraft: Java Edition account for immediate login when joining Geyser. It is advised you ONLY use this option if you are running Geyser locally and that ONLY you have access to the config as it requires you put your Minecraft: Java Edition credentials in plain text! . If your Xbox account name was Notch, your Java email was foobar2000@gmail.com and your password was hunter2, you would fill this into the config: . userAuths: Notch: # MCPE/Xbox username email: foobar2000@gmail.com password: \"hunter2\" . command-suggestions: Bedrock clients freeze or crash when opening up the command prompt for the first time with a large amount of command suggestions. This config option disables command suggestions being sent to prevent any freezing. passthrough-motd: If the MOTD should be relayed from the remote server. Causes the motd1 and motd2 options in the bedrock section to no longer have a use. passthrough-players: If the current and max player counts should be relayed from the remote server. legacy-ping-passthrough: If enabled, manually pings the server by impersonating a Minecraft client instead of using the server’s API. This option should only be enabled if your MOTD or player count is not accurate, as it can cause errors especially on BungeeCord. This option does nothing on standalone. ping-passthrough-interval: How often the fake Minecraft client should attempt to ping the remote server to update information, in seconds (a setting of 1 will ping the server every second; a setting of 3 will ping the server every three seconds). Only relevant for standalone and legacy ping passthrough. Increase the number if you’re getting timeout or BrokenPipe exceptions. max-players: The maximum amount of players that can join through Geyser. debug-mode: If debug messages should be printed in console. Useful if you run into an error and need more context. general-thread-pool: The amount of threads Geyser will be able to use. Higher is not always better :P. allow-third-party-capes: If third party (Optifine, 5zig, LabyMod, etc.) capes should be displayed to the bedrock player. allow-third-party-ears: If third party Deadmau5-style ears should be enabled. Currently only supports MinecraftCapes. default-locale: The default locale to send to players if their locale could not be found. Check this page https://github.com/GeyserMC/Geyser/wiki/FAQ#what-languages-does-geyser-support to find the code corresponding to your language. chunk-caching: Cache chunks for each Bedrock player and adds support for additional sounds at the expense of more RAM usage. This option is always on for Bukkit as we can use the server’s API to get block information at no expense. above-nether-bedrock-building: Bedrock prevents building and displaying blocks above Y127 in the Nether - enabling this config option works around that by changing the Nether dimension ID to the End ID. The main downside to this is that the sky will resemble that of the End sky in the Nether, but ultimately it’s the only way for this feature to work. Default Geyser Config: . # -------------------------------- # Geyser Configuration File # # A bridge between Minecraft: Bedrock Edition and Minecraft: Java Edition. # # GitHub: https://github.com/GeyserMC/Geyser # Discord: https://discord.geysermc.org/ # -------------------------------- bedrock: # The IP address that will listen for connections address: 0.0.0.0 # The port that will listen for connections port: 19132 # The MOTD that will be broadcasted to Minecraft: Bedrock Edition clients. Irrelevant if \"passthrough-motd\" is set to true motd1: \"GeyserMC\" motd2: \"Another GeyserMC forced host.\" remote: # The IP address of the remote (Java Edition) server address: 127.0.0.1 # The port of the remote (Java Edition) server port: 25565 # Authentication type. Can be offline, online, or floodgate (see https://github.com/GeyserMC/Geyser/wiki/Floodgate). auth-type: online # Floodgate uses encryption to ensure use from authorised sources. # This should point to the public key generated by Floodgate (Bungee or CraftBukkit) # You can ignore this when not using Floodgate. floodgate-key-file: public-key.pem ## the Xbox/MCPE username is the key for the Java server auth-info ## this allows automatic configuration/login to the remote Java server ## if you are brave/stupid enough to put your Mojang account info into ## a config file #userAuths: # bluerkelp2: # MCPE/Xbox username # email: not_really_my_email_address_mr_minecrafter53267@gmail.com # Mojang account email address # password: \"this isn't really my password\" # # herpderp40300499303040503030300500293858393589: # email: herpderp@derpherp.com # password: dooooo # Bedrock clients can freeze when opening up the command prompt for the first time if given a lot of commands. # Disabling this will prevent command suggestions from being sent and solve freezing for Bedrock clients. command-suggestions: true # The following two options enable \"ping passthrough\" - the MOTD and/or player count gets retrieved from the Java server. # Relay the MOTD from the remote server to Bedrock players. passthrough-motd: false # Relay the player count and max players from the remote server to Bedrock players. passthrough-player-counts: false # Enable LEGACY ping passthrough. There is no need to enable this unless your MOTD or player count does not appear properly. # This option does nothing on standalone. legacy-ping-passthrough: false # How often to ping the remote server, in seconds. Only relevant for standalone or legacy ping passthrough. # Increase if you are getting BrokenPipe errors. ping-passthrough-interval: 3 # Maximum amount of players that can connect max-players: 100 # If debug messages should be sent through console debug-mode: false # Thread pool size general-thread-pool: 32 # Allow third party capes to be visible. Currently allowing: # OptiFine capes, LabyMod capes, 5Zig capes and MinecraftCapes allow-third-party-capes: true # Allow third party deadmau5 ears to be visible. Currently allowing: # MinecraftCapes allow-third-party-ears: false # The default locale if we dont have the one the client requested default-locale: en_us # Configures if chunk caching should be enabled or not. This keeps an individual # record of each block the client loads in. While this feature does allow for a few # things such as block break animations to show up in creative mode and among others, # it is HIGHLY recommended you disable this on a production environment as it can eat # up a lot of RAM. However, when using the Bukkit version of Geyser, support for features # or implementations this allows is automatically enabled without the additional caching as # Geyser has direct access to the server itself. cache-chunks: false # Bedrock prevents building and displaying blocks above Y127 in the Nether - # enabling this config option works around that by changing the Nether dimension ID # to the End ID. The main downside to this is that the sky will resemble that of # the end sky in the nether, but ultimately it's the only way for this feature to work. above-bedrock-nether-building: false # bStats is a stat tracker that is entirely anonymous and tracks only basic information # about Geyser, such as how many people are online, how many servers are using Geyser, # what OS is being used, etc. You can learn more about bStats here: https://bstats.org/. # https://bstats.org/plugin/server-implementation/GeyserMC metrics: # If metrics should be enabled enabled: true # UUID of server, don't change! uuid: generateduuid # DO NOT TOUCH! config-version: 3 . ",
+    "url": "/GeyserMC-Pages/geyser/config#general-options",
+    "relUrl": "/geyser/config#general-options"
+  },"9": {
+    "doc": "Config",
+    "title": "Config",
+    "content": ". | address - The IP address that will listen for connections. | remote-address - The IP address to forward players to, this needs to be accessible by the client. Set it to auto to grab your public IP automatically. | port - The port that will listen for connections. | debug-mode - If debug messages should be sent through console. | max-players - Maximum amount of players that can connect. | motd - MOTD to display. | geyser . | port - The port that will listen for connections. | debug-mode - If debug messages should be sent through the console, has to be enabled in both places to work. | shutdown-time - The time to wait after the last player disconnects to shutdown the proxy, in seconds. Set to -1 to disable. | . | servers - A list of servers to show for everyone build from address, port, online and bedrock all optional apart from address. | custom-servers . | enabled - Should custom servers be enabled for users. | max - Max amount of custom servers per user. | storage-type - Storage engine for custom servers. Can be json, sqlite, mysql | mysql - Connection information for the MySQL database if enabled | . | . The default config can be found here. ",
+    "url": "/GeyserMC-Pages/geyser-connect/config",
+    "relUrl": "/geyser-connect/config"
+  },"10": {
+    "doc": "FAQ",
+    "title": "FAQ",
+    "content": " ",
+    "url": "/GeyserMC-Pages/geyser/faq",
+    "relUrl": "/geyser/faq"
+  },"11": {
+    "doc": "FAQ",
+    "title": "How Does it Work?",
+    "content": "Geyser works as a translator, translating both the incoming and outgoing packets to a format both the client and server can understand. With this being said, it emulates a Minecraft: Java Edition client, so the server actually thinks you’re joining from Java Edition. Regardless of the server or what plugins it has installed, you can join it with Geyser (as long as the server supports the latest Minecraft version). ",
+    "url": "/GeyserMC-Pages/geyser/faq#how-does-it-work",
+    "relUrl": "/geyser/faq#how-does-it-work"
+  },"12": {
+    "doc": "FAQ",
+    "title": "What plugins don’t work with Geyser?",
+    "content": ". | JPremium alters the UUID of a player causing Floodgate to not be able to get the Bedrock data from its map. | ProtocolSupport sometimes causes issues with Floodgate saying Invalid packet id: 27. Use ViaVersion instead if this keeps occurring. | TCPShield causes Floodgate not to be able to authenticate. | . If you come across any more please let us know via Discord. ",
+    "url": "/GeyserMC-Pages/geyser/faq#what-plugins-dont-work-with-geyser",
+    "relUrl": "/geyser/faq#what-plugins-dont-work-with-geyser"
+  },"13": {
+    "doc": "FAQ",
+    "title": "Which plugin version of Geyser do I need?",
+    "content": "This is a non-complete list of what platform each plugin version of Geyser is for, the standalone version can be used for any as it isn’t a plugin. | Geyser-Spigot works with: . | Spigot | Paper (recommended) | Any other forks of the above | . | Geyser-Bungee works with: . | BungeeCord | Waterfall | Any other forks of the above | . | Geyser-Velocity works with Velocity | Geyser-Sponge works with SpongeVanilla or SpongeForge | . ",
+    "url": "/GeyserMC-Pages/geyser/faq#which-plugin-version-of-geyser-do-i-need",
+    "relUrl": "/geyser/faq#which-plugin-version-of-geyser-do-i-need"
+  },"14": {
+    "doc": "FAQ",
+    "title": "If using BungeeCord or another fork, where do I need to put Geyser/Floodgate?",
+    "content": "You only need Geyser and/or Floodgate on the BungeeCord server. ",
+    "url": "/GeyserMC-Pages/geyser/faq#if-using-bungeecord-or-another-fork-where-do-i-need-to-put-geyserfloodgate",
+    "relUrl": "/geyser/faq#if-using-bungeecord-or-another-fork-where-do-i-need-to-put-geyserfloodgate"
+  },"15": {
+    "doc": "FAQ",
+    "title": "Can I use Geyser with Pterodactyl Panel?",
+    "content": "Yes, we have an official egg for the standalone version, it supports auto-updating and has all config options easily editable. You can find it here, just download the JSON egg and import it into your panel. ",
+    "url": "/GeyserMC-Pages/geyser/faq#can-i-use-geyser-with-pterodactyl-panel",
+    "relUrl": "/geyser/faq#can-i-use-geyser-with-pterodactyl-panel"
+  },"16": {
+    "doc": "FAQ",
+    "title": "Can I use Geyser with Ngrok?",
+    "content": "Unfortunately Ngrok is TCP-only, so you will not be able to use Geyser with Ngrok. ",
+    "url": "/GeyserMC-Pages/geyser/faq#can-i-use-geyser-with-ngrok",
+    "relUrl": "/geyser/faq#can-i-use-geyser-with-ngrok"
+  },"17": {
+    "doc": "FAQ",
+    "title": "Can I use Buycraft with Geyser?",
+    "content": "You sure can! Buycraft supports Java &amp; Bedrock players via the Offline store mode (Recommended to be used with Floodgate) . Steps to create a store to support both versions . | Buycraft-&gt; Create Webstore | Select Game-&gt; Minecraft Offline | Continue-&gt; Click “Create my Webstore” | Name your server &amp; Select currency-&gt; Continue | Select Game Server-&gt; Continue | Download the plugin version that best suits your server. | Execute the secret command from your servers console | . Your store is now setup to support Bedrock &amp; Java players . (PLEASE NOTE, BEDROCK PLAYERS MUST INCLUDE THE PREFIX) . ",
+    "url": "/GeyserMC-Pages/geyser/faq#can-i-use-buycraft-with-geyser",
+    "relUrl": "/geyser/faq#can-i-use-buycraft-with-geyser"
+  },"18": {
+    "doc": "FAQ",
+    "title": "What languages does Geyser support?",
+    "content": "We aim to support any of the bedrock languages, see here for our Crowdin page and below is a list of all the language codes. |Name |Code |—————————-|—–|Bulgarian |bg_bg|Czech |cs_cz|Danish |da_dk|German |de_de|Greek |el_gr|British English |en_gb|American English |en_us|Spanish |es_es|Mexican Spanish |es_mx|Finnish |fi_fi|Canadian French |fr_ca|French |fr_fr|Hungarian |hu_hu|Indonesian |id_id|Italian |it_it|Japanese |ja_jp|Korean |ko_kr|Dutch |nl_nl|Norwegian Bokmål |nb_no|Polish |pl_pl|Brazilian Portuguese |pt_br|Portuguese |pt_pt|Russian |ru_ru|Slovak |sk_sk|Swedish |sv_se|Turkish |tr_tr|Ukrainian |uk_ua|Chinese Simplified (China) |zh_cn|Chinese Traditional (Taiwan)|zh_tw| . ",
+    "url": "/GeyserMC-Pages/geyser/faq#what-languages-does-geyser-support",
+    "relUrl": "/geyser/faq#what-languages-does-geyser-support"
+  },"19": {
+    "doc": "FAQ",
+    "title": "FAQ",
+    "content": " ",
+    "url": "/GeyserMC-Pages/floodgate/faq",
+    "relUrl": "/floodgate/faq"
+  },"20": {
+    "doc": "FAQ",
+    "title": "How do I add players to the whitelist when using Floodgate?",
+    "content": "There are two ways you can do this. The first way is to turn off the whitelist using /whitelist off, then get the Geyser player to join, then run /whitelist add \"username\", then turn the whitelist back on using /whitelist on. The second way is to add the player’s UUID as given by Floodgate to the whitelist.json file and then run /whitelist reload. ",
+    "url": "/GeyserMC-Pages/floodgate/faq#how-do-i-add-players-to-the-whitelist-when-using-floodgate",
+    "relUrl": "/floodgate/faq#how-do-i-add-players-to-the-whitelist-when-using-floodgate"
+  },"21": {
+    "doc": "FAQ",
+    "title": "How do I find a player’s UUID without them joining when using Floodgate?",
+    "content": "First, you’ll need to get the XUID of the player. There are several third-party websites to find this, for example this one (unaffiliated with Geyser). Make sure to choose “ Hexidecimal”. You’ll need to enter the player’s Xbox gamertag, and once submitted it should display the XUID in the format of xxxxxxxxxxxxxxxx. In order to turn the XUID into a UUID that Java Edition can recognize, you just need to put the XUID in this format: 00000000-0000-0000-xxxx-xxxxxxxxxxxx. If formatted right, Java Edition should accept it as a UUID. ",
+    "url": "/GeyserMC-Pages/floodgate/faq#how-do-i-find-a-players-uuid-without-them-joining-when-using-floodgate",
+    "relUrl": "/floodgate/faq#how-do-i-find-a-players-uuid-without-them-joining-when-using-floodgate"
+  },"22": {
+    "doc": "Floodgate API",
+    "title": "API",
+    "content": "– TODO – . ",
+    "url": "/GeyserMC-Pages/development/floodgate-api#api",
+    "relUrl": "/development/floodgate-api#api"
+  },"23": {
+    "doc": "Floodgate API",
+    "title": "Floodgate API",
+    "content": " ",
+    "url": "/GeyserMC-Pages/development/floodgate-api",
+    "relUrl": "/development/floodgate-api"
+  },"24": {
+    "doc": "Geyser",
+    "title": "Geyser",
+    "content": ". A bridge between Minecraft: Bedrock Edition and Minecraft: Java Edition. Currently supporting MC Bedrock v1.16.0/1 and MC Java v1.16.1 . The goal of Geyser is to bridge the Minecraft: Bedrock Edition and Minecraft: Java Edition by allowing Bedrock clients to join Java Edition servers. This project is still in development and not complete yet, so expect bugs. ",
+    "url": "/GeyserMC-Pages/geyser/",
+    "relUrl": "/geyser/"
+  },"25": {
+    "doc": "Geyser Connect",
+    "title": "Geyser Connect",
+    "content": " ",
+    "url": "/GeyserMC-Pages/geyser-connect/",
+    "relUrl": "/geyser-connect/"
+  },"26": {
+    "doc": "Geyser Addons",
+    "title": "Geyser Addons",
+    "content": " ",
+    "url": "/GeyserMC-Pages/geyser-addons/",
+    "relUrl": "/geyser-addons/"
+  },"27": {
+    "doc": "Development",
+    "title": "Development",
+    "content": " ",
+    "url": "/GeyserMC-Pages/development/",
+    "relUrl": "/development/"
+  },"28": {
+    "doc": "Floodgate",
+    "title": "Floodgate",
+    "content": "Floodgate is a hybrid mode plugin which allows for Minecraft: Bedrock Accounts to join Minecraft: Java Edition servers without needing a Minecraft: Java Edition account. This is something you install in addition to Geyser. Unlike Geyser, Floodgate can only be installed as a plugin on Bukkit, Bungeecord, and Velocity, and can only be utilized on servers that have it installed. Download . ",
+    "url": "/GeyserMC-Pages/floodgate/",
+    "relUrl": "/floodgate/"
+  },"29": {
+    "doc": "Home",
+    "title": "Home",
+    "content": "Revolutionize your Minecraft Server with Geyser by allowing Minecraft Bedrock Edition to join your Minecraft Java server. ",
+    "url": "/GeyserMC-Pages/#home",
+    "relUrl": "/#home"
+  },"30": {
+    "doc": "Home",
+    "title": "Home",
+    "content": "– THIS PAGE IS A DRAFT – . ",
+    "url": "/GeyserMC-Pages/",
+    "relUrl": "/"
+  },"31": {
+    "doc": "Common Issues",
+    "title": "Common Issues",
+    "content": "Commonly, people may have issues with Geyser not showing up in their server list or run into similar issues. This page contains a few common issues people may encounter that you might have as well as potential fixes for them. If you still can’t make it work, join our Discord for support. ",
+    "url": "/GeyserMC-Pages/geyser/issues",
+    "relUrl": "/geyser/issues"
+  },"32": {
+    "doc": "Common Issues",
+    "title": "“Unable to connect to world”",
+    "content": "This error means that the Bedrock client cannot find the server. If this occurred after updating a plugin version of Geyser, ensure that you shut off your server, swapped the Geyser jar, and then started up your server. Otherwise, check the solutions below for potential solutions, make sure you’re port forwarded or make sure your hosting provider can support Geyser. ",
+    "url": "/GeyserMC-Pages/geyser/issues#unable-to-connect-to-world",
+    "relUrl": "/geyser/issues#unable-to-connect-to-world"
+  },"33": {
+    "doc": "Common Issues",
+    "title": "Pterodactyl",
+    "content": "If you get this error while using the Pterodactyl Panel, try editing the Geyser config and changing the port to something besides 19132 (e.g. 25566). ",
+    "url": "/GeyserMC-Pages/geyser/issues#pterodactyl",
+    "relUrl": "/geyser/issues#pterodactyl"
+  },"34": {
+    "doc": "Common Issues",
+    "title": "Geyser Not Showing Up in Server List",
+    "content": "This is a very common occurence and is usually one of a few problems nearly every time. ",
+    "url": "/GeyserMC-Pages/geyser/issues#geyser-not-showing-up-in-server-list",
+    "relUrl": "/geyser/issues#geyser-not-showing-up-in-server-list"
+  },"35": {
+    "doc": "Common Issues",
+    "title": "Loopback Restrictions Not Lifted",
+    "content": "This only affects people trying to join Geyser from Windows 10 Edition with Geyser hosted on the same computer. This is an issue caused by Loopback restrictions not being lifted. By default, Microsoft Apps have this restriction on all their apps for local connections. You can lift it by typing the following in Windows PowerShell in administrator mode: . CheckNetIsolation LoopbackExempt -a -n=\"Microsoft.MinecraftUWP_8wekyb3d8bbwe\" . In most cases, Geyser should resolve this issue automatically, but in some events where you may not be an administrator, this will not automatically be resolved. ",
+    "url": "/GeyserMC-Pages/geyser/issues#loopback-restrictions-not-lifted",
+    "relUrl": "/geyser/issues#loopback-restrictions-not-lifted"
+  },"36": {
+    "doc": "Common Issues",
+    "title": "Geyser Not Showing Up in Friends Tab",
+    "content": "This is also a common one, Geyser won’t always show up in your friends tab and you will have to manually add it through the servers tab. Start off by just using localhost or 0.0.0.0 as the IP address. If that does not work, use your local IPv4 address. ",
+    "url": "/GeyserMC-Pages/geyser/issues#geyser-not-showing-up-in-friends-tab",
+    "relUrl": "/geyser/issues#geyser-not-showing-up-in-friends-tab"
+  },"37": {
+    "doc": "Common Issues",
+    "title": "Geyser Showing Up On Local Computer But Not Anywhere Else",
+    "content": "Check your firewall settings and make sure that Java is allowed. ",
+    "url": "/GeyserMC-Pages/geyser/issues#geyser-showing-up-on-local-computer-but-not-anywhere-else",
+    "relUrl": "/geyser/issues#geyser-showing-up-on-local-computer-but-not-anywhere-else"
+  },"38": {
+    "doc": "Common Issues",
+    "title": "SRV Records Not Properly Working",
+    "content": "Bedrock edition does not support SRV records, so this option won’t work at all. ",
+    "url": "/GeyserMC-Pages/geyser/issues#srv-records-not-properly-working",
+    "relUrl": "/geyser/issues#srv-records-not-properly-working"
+  },"39": {
+    "doc": "Common Issues",
+    "title": "Using TCP in DNS Options or Portforwarding Instead of UDP",
+    "content": "Bedrock uses UDP instead of TCP, so you will have to update your DNS or port forward accordingly if you are using TCP instead. ",
+    "url": "/GeyserMC-Pages/geyser/issues#using-tcp-in-dns-options-or-portforwarding-instead-of-udp",
+    "relUrl": "/geyser/issues#using-tcp-in-dns-options-or-portforwarding-instead-of-udp"
+  },"40": {
+    "doc": "Common Issues",
+    "title": "Server on External Host Can’t Be Connected to Despite Java Players Being able to Connect",
+    "content": "This usually has something to do on your host’s end. Most commonly, it’s because they do not open up ports over the UDP protocol, which is what Minecraft: Bedrock Edition uses, opposed to Minecraft: Java Edition using TCP. One way to get around this (if you’re using an online host) is to shut down your server, and when asking for a server jar, select Nukkit (you won’t actually be switching to Nukkit). Afterward, open up your FTP file manager and find the Nukkit jar. Then, replace this jar with the server software you’re using. Upon starting up the server, it should open up ports over UDP whilst still allowing you to use the server jar you desire. PLEASE NOTE: If your server automatically redownloads jars upon startup, such as with an autoupdate system, this workaround will not work. Please contact your host if this does not work for you as there is nothing we can do. ",
+    "url": "/GeyserMC-Pages/geyser/issues#server-on-external-host-cant-be-connected-to-despite-java-players-being-able-to-connect",
+    "relUrl": "/geyser/issues#server-on-external-host-cant-be-connected-to-despite-java-players-being-able-to-connect"
+  },"41": {
+    "doc": "Common Issues",
+    "title": "java.net.BindException: Address already in use: bind",
+    "content": "This means something (likely another instance of Geyser) is running on the port you have specified in the config. Please make sure you close all applications running on this port. This is sometimes due to the fact that you doubleclicked the jar instead of running it using a startup script. If you don’t recall opening anything, usually restarting your computer fixes this. ",
+    "url": "/GeyserMC-Pages/geyser/issues#javanetbindexception-address-already-in-use-bind",
+    "relUrl": "/geyser/issues#javanetbindexception-address-already-in-use-bind"
+  },"42": {
+    "doc": "Common Issues",
+    "title": "Login Failed",
+    "content": " ",
+    "url": "/GeyserMC-Pages/geyser/issues#login-failed",
+    "relUrl": "/geyser/issues#login-failed"
+  },"43": {
+    "doc": "Common Issues",
+    "title": "Server is in Online Mode while Geyser is in Offline Mode (Access token can not be null or empty)",
+    "content": "If you have your configuration set up like this, put simply, it won’t work. If authentication for the Java server is set to online, it is expected Geyser is configured the same way. The server requires a valid Minecraft: Java Edition account, and if you aren’t logging into one with Geyser, then you will be unable to join the server. If your configuration is set up properly and you’re still getting this issue, it could be that your credentials are invalid. ",
+    "url": "/GeyserMC-Pages/geyser/issues#server-is-in-online-mode-while-geyser-is-in-offline-mode-access-token-can-not-be-null-or-empty",
+    "relUrl": "/geyser/issues#server-is-in-online-mode-while-geyser-is-in-offline-mode-access-token-can-not-be-null-or-empty"
+  },"44": {
+    "doc": "Common Issues",
+    "title": "Floodgate Misconfiguration",
+    "content": "See this page for more information. ",
+    "url": "/GeyserMC-Pages/geyser/issues#floodgate-misconfiguration",
+    "relUrl": "/geyser/issues#floodgate-misconfiguration"
+  },"45": {
+    "doc": "Common Issues",
+    "title": "Mojang Resetting Account Credentials",
+    "content": "This is unfortunately something we have no control over, and is most likely the case when you’re running Geyser as a plugin on a server host or joining a friend far away from your location. If you’re running Geyser locally, this should not happen to you, but what we recommend for servers is a plugin we make called Floodgate, which allows for Bedrock clients to join your server without needing a Java Edition account. Take a look here for more information. ",
+    "url": "/GeyserMC-Pages/geyser/issues#mojang-resetting-account-credentials",
+    "relUrl": "/geyser/issues#mojang-resetting-account-credentials"
+  },"46": {
+    "doc": "Common Issues",
+    "title": "Geyser Bukkit plugin does not load with CraftBukkit/other error with CraftBukkit",
+    "content": "Geyser is not tested with CraftBukkit, and Floodgate will not load with CraftBukkit. We recommend you use the Paper or Spigot server software. ",
+    "url": "/GeyserMC-Pages/geyser/issues#geyser-bukkit-plugin-does-not-load-with-craftbukkitother-error-with-craftbukkit",
+    "relUrl": "/geyser/issues#geyser-bukkit-plugin-does-not-load-with-craftbukkitother-error-with-craftbukkit"
+  },"47": {
+    "doc": "Common Issues",
+    "title": "Bedrock clients freeze when opening up commands for the first time",
+    "content": "Disable command-suggestions in your Geyser config. This will stop the freezing at the expense of removing command suggestions from Bedrock clients. ",
+    "url": "/GeyserMC-Pages/geyser/issues#bedrock-clients-freeze-when-opening-up-commands-for-the-first-time",
+    "relUrl": "/geyser/issues#bedrock-clients-freeze-when-opening-up-commands-for-the-first-time"
+  },"48": {
+    "doc": "Common Issues",
+    "title": "BungeeCord freezes and crashes after bedrock player joins",
+    "content": "Make sure you have set ip-forward to true in your BungeeCord config.yml and set bungeecord to true in each connected server’s spigot.yml. ",
+    "url": "/GeyserMC-Pages/geyser/issues#bungeecord-freezes-and-crashes-after-bedrock-player-joins",
+    "relUrl": "/geyser/issues#bungeecord-freezes-and-crashes-after-bedrock-player-joins"
+  },"49": {
+    "doc": "Common Issues",
+    "title": "Floodgate",
+    "content": "For most floodgate issues see: Floodgate: Known Issues/Caveats. ",
+    "url": "/GeyserMC-Pages/geyser/issues#floodgate",
+    "relUrl": "/geyser/issues#floodgate"
+  },"50": {
+    "doc": "Common Issues",
+    "title": "If you wish to use IP forwarding, please enable it in your BungeeCord config as well!",
+    "content": "It is likely you have enabled send-floodgate-data in your Floodgate config but either Floodgate isn’t installed on the target server or you floodgate keys aren’t the same between the installs of the plugin, please copy them so they all use the same set. ",
+    "url": "/GeyserMC-Pages/geyser/issues#if-you-wish-to-use-ip-forwarding-please-enable-it-in-your-bungeecord-config-as-well",
+    "relUrl": "/geyser/issues#if-you-wish-to-use-ip-forwarding-please-enable-it-in-your-bungeecord-config-as-well"
+  },"51": {
+    "doc": "Common Issues",
+    "title": "Common Issues",
+    "content": " ",
+    "url": "/GeyserMC-Pages/floodgate/issues",
+    "relUrl": "/floodgate/issues"
+  },"52": {
+    "doc": "Common Issues",
+    "title": "Skins",
+    "content": "Due to how Minecraft: Java Edition handles skins, all Bedrock players will appear as Steve or Alex to other Java players. ",
+    "url": "/GeyserMC-Pages/floodgate/issues#skins",
+    "relUrl": "/floodgate/issues#skins"
+  },"53": {
+    "doc": "Common Issues",
+    "title": "Access token can not be null or empty",
+    "content": "This may be because you forgot to set the auth-type in the config to floodgate. If that isn’t it, check to make sure your config contains the line floodgate-key-file: public-key.pem. If not, just copy that in directly. ",
+    "url": "/GeyserMC-Pages/floodgate/issues#access-token-can-not-be-null-or-empty",
+    "relUrl": "/floodgate/issues#access-token-can-not-be-null-or-empty"
+  },"54": {
+    "doc": "Common Issues",
+    "title": "Invalid packet id: 27",
+    "content": "This usually means one of two things: . | You did not follow the Floodgate instructions properly. However, in an unlikely scenario, this could also be an error related to uploading through FTP. Using ascii will not work here, and you need to make sure you’re on binary when uploading. | You’re trying to log in without an Xbox account. Floodgate requires an Xbox account to authenticate the Bedrock player. | . ",
+    "url": "/GeyserMC-Pages/floodgate/issues#invalid-packet-id-27",
+    "relUrl": "/floodgate/issues#invalid-packet-id-27"
+  },"55": {
+    "doc": "Common Issues",
+    "title": "Whitelist command not working",
+    "content": "See this page. – MOVE TO AN FAQ PAGE? – . ",
+    "url": "/GeyserMC-Pages/floodgate/issues#whitelist-command-not-working",
+    "relUrl": "/floodgate/issues#whitelist-command-not-working"
+  },"56": {
+    "doc": "Common Issues",
+    "title": "Obtaining UUIDs for Floodgate players",
+    "content": "Check the server log for their UUIDs, or use this method. – WILL BE MOVED TO GEYSER ADDONS – . ",
+    "url": "/GeyserMC-Pages/floodgate/issues#obtaining-uuids-for-floodgate-players",
+    "relUrl": "/floodgate/issues#obtaining-uuids-for-floodgate-players"
+  },"57": {
+    "doc": "Common Issues",
+    "title": "Using PlaceholderAPI",
+    "content": "If you’re using the Bukkit version of Floodgate, download the Placeholder plugin here. Using the placeholders shouldn’t require additional setup other than having PlaceholderAPI installed. See the section above on installing Floodgate on backend servers if you wish to use this on BungeeCord. ",
+    "url": "/GeyserMC-Pages/floodgate/issues#using-placeholderapi",
+    "relUrl": "/floodgate/issues#using-placeholderapi"
+  },"58": {
+    "doc": "Common Issues",
+    "title": "Using Skript",
+    "content": "If you’re using the Bukkit version of Floodgate, there is an unofficial plugin that adds Skript support here. ",
+    "url": "/GeyserMC-Pages/floodgate/issues#using-skript",
+    "relUrl": "/floodgate/issues#using-skript"
+  },"59": {
+    "doc": "Modules",
+    "title": "Modules",
+    "content": "| Name | Description | . | Placeholders | Adds PlaceholderAPI support for Floodgate | . | Skript | Adds Skript support for Floodgate | . ",
+    "url": "/GeyserMC-Pages/geyser-addons/modules#modules",
+    "relUrl": "/geyser-addons/modules#modules"
+  },"60": {
+    "doc": "Modules",
+    "title": "Modules",
+    "content": "– THIS PAGE IS A DRAFT – . ",
+    "url": "/GeyserMC-Pages/geyser-addons/modules",
+    "relUrl": "/geyser-addons/modules"
+  },"61": {
+    "doc": "Supported Hosting Providers",
+    "title": "Supported Hosting Providers",
+    "content": "This list is incomplete. Please add a link or contact us on Discord if the information is not incorrect or you want to add a new hosting provider! . It should also be noted that these providers may not be verified by the Geyser team, and the server providers below are reported as working by members of the community. Warning: The below are all for the plugin versions of Geyser unless otherwise specified . ",
+    "url": "/GeyserMC-Pages/geyser/providers",
+    "relUrl": "/geyser/providers"
+  },"62": {
+    "doc": "Supported Hosting Providers",
+    "title": "Built-in Geyser",
+    "content": ". | Minehut (Connect via bedrock.minehut.com and do /join &lt;servername&gt;) | . ",
+    "url": "/GeyserMC-Pages/geyser/providers#built-in-geyser",
+    "relUrl": "/geyser/providers#built-in-geyser"
+  },"63": {
+    "doc": "Supported Hosting Providers",
+    "title": "Support for Geyser",
+    "content": ". | Apex Hosting (Need to listen on the Java IP, default port may not work) | BisectHosting (Need to ask to open a UDP port, and listen on the Java IP) | Dashflo.net (Use the same port as your Java server or buy a dedicated IP address to support different port) | DedicatedMC (Need to ask to open the default bedrock port.) | FadeHost (Use the same port as your Java server or buy a dedicated IP address to support different port) | FreeMcServer.net | GGServers | Google Cloud (Not a dedicated Minecraft provider) . | 1 year/$300 free trial | Tutorial for a Minecraft server Google Cloud | Note: You’ll need to also allow port 19132 on UDP, use Paper instead of vanilla and put Geyser in the plugins folder | You also don’t need an SSD, they’re just trying to make you pay more | . | Heavynode (Use default port and 0.0.0.0 as address) | MChost (Use the same port as your Java server) | MCProHosting (Add 19132 UDP to port forward mapping and connect to the given source port) | Meloncube (Need to ask to open a UDP port) | Pebblehost (Use the same port as your Java server) | RamShard | Server.pro (Use the same port as your Java server) | Shockbyte (Use the same port as your Java server. You can also see standalone installation instructions here.) | Skynode.pro . | Use the port provided by Skynode | Only Geyser Standalone can be used | You’ll need to make a new server to host Geyser on | Replace the server.jar with the Geyser.jar (from Jenkins) | . | SlothHost | The Minecraft Hosting (19132 should work, if not use the same port as your Java server) | Titan Nodes (Use the Default server port and 0.0.0.0 as the host address.) | WinterNode (Use the same port as your Java server, request an additional port, or buy a dedicated IP address) | Witherhosting (Use the same port as your Java server) added by Chris | ZapHosting (Use the same port as your Java server, request an additional port, or buy a dedicated IP address) | . ",
+    "url": "/GeyserMC-Pages/geyser/providers#support-for-geyser",
+    "relUrl": "/geyser/providers#support-for-geyser"
+  },"64": {
+    "doc": "Supported Hosting Providers",
+    "title": "Does not support Geyser",
+    "content": ". | Aternos | FreeMC | . ",
+    "url": "/GeyserMC-Pages/geyser/providers#does-not-support-geyser",
+    "relUrl": "/geyser/providers#does-not-support-geyser"
+  },"65": {
+    "doc": "Setup",
+    "title": "Setup",
+    "content": "Bedrock clients will join through Geyser and it will handle all the packet translations. There are four different versions of Geyser: Geyser for Bukkit (works on derivatives such as Spigot and Paper), Geyser for BungeeCord (also works on Waterfall), Geyser for Velocity, and Geyser Standalone. The first three versions run as plugins and can be installed directly onto the server. The standalone version can be used in a similar way, except you run it separately. If you are running a server, it is highly recommended you use one of the plugin versions, and if you want to join a server that does not have Geyser installed, you can run the standalone version. If you use Pterodactyl Panel we have an egg for the standalone version, please see here for more information. If you’re still having problems with Geyser not working or giving you an “Unable to connect to world” error, see the Common Issues page. For more information, take a look at the Understanding the Config page, and the FAQ page. And if you still have questions, feel free to join the Discord if you haven’t already. ",
+    "url": "/GeyserMC-Pages/geyser/setup",
+    "relUrl": "/geyser/setup"
+  },"66": {
+    "doc": "Setup",
+    "title": "Plugin Setup",
+    "content": ". | Download a jar of Geyser from the build server depending on what platform your server runs on. | Put Geyser in your plugins folder and start up the server. | Configure any needed options in the Geyser config. A description of all options of the config can be found on the Understanding the Config page. In most scenarios, this file should not need to be touched unless you intend to use Floodgate, or you’re running your Java on a port that is not 25565. This may be the case if you are using a server hosting provider. Information on your hosting provider might be available on the Supported Hosting Providers page. You should not need to configure your remote address as the plugin handles this for you. | Restart your server if needed. | . Once you’re done, open up Minecraft: Bedrock Edition and in the Friends tab, Geyser should show up there. If it does not show up, just add your IPv4 as an external server. ",
+    "url": "/GeyserMC-Pages/geyser/setup#plugin-setup",
+    "relUrl": "/geyser/setup#plugin-setup"
+  },"67": {
+    "doc": "Setup",
+    "title": "Standalone Setup",
+    "content": "Please keep in mind, you need some sort of computer or host to run Geyser Standalone on. Applications such as Termux on Android are capable of running Geyser, but this largely depends on how powerful your Android device is. Please do so at your own risk. Instructions to run Geyser on Termux can be found here. | Download a jar of Geyser from the build server. | Create a new folder for Geyser, and drop the jar in there. | Create a new bat or startup script, similar to the one you’d use for a Bukkit server, and take a look at this page for what to put into it. | Run the startup script/bat, and all the necessary files for Geyser will be created. | . Once you’re done, open up Minecraft: Bedrock Edition and in the Friends tab, Geyser should show up there. If it does not show up, just add your IPv4 as an external server. ",
+    "url": "/GeyserMC-Pages/geyser/setup#standalone-setup",
+    "relUrl": "/geyser/setup#standalone-setup"
+  },"68": {
+    "doc": "Setup",
+    "title": "Termux (Android)",
+    "content": "Please read the disclaimer here before continuing. | Download Termux | Follow this guide | Run apt install default-jre | Run wget https://ci.nukkitx.com/job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/standalone/target/Geyser.jar | Run java -jar Geyser.jar | . OR . We have an automated setup script for clean Termux installs, might not work for all users. If the manual guide above does not work, try this. Run this to start the download/install: . curl https://gist.githubusercontent.com/rtm516/e3e07d6595ee41e05a38b03c0f4d7a80/raw/install.sh | bash . ",
+    "url": "/GeyserMC-Pages/geyser/setup#termux-android",
+    "relUrl": "/geyser/setup#termux-android"
+  },"69": {
+    "doc": "Setup",
+    "title": "Setup",
+    "content": " ",
+    "url": "/GeyserMC-Pages/geyser-connect/setup",
+    "relUrl": "/geyser-connect/setup"
+  },"70": {
+    "doc": "Setup",
+    "title": "Installation",
+    "content": "(For GeyserConnect to work you need 2 UDP ports open, by default these are 19132 and 19133.) . | Download the latest build from Jenkins | Edit the config as needed | Start the server as you do with a normal Geyser install. EG: java -Xms1024M -jar GeyserConnect.jar (More info on Creating a Startup Script) | Connect to it to make sure its all working. | . ",
+    "url": "/GeyserMC-Pages/geyser-connect/setup#installation",
+    "relUrl": "/geyser-connect/setup#installation"
+  },"71": {
+    "doc": "Setup",
+    "title": "DNS and Docker",
+    "content": "There are both DNS (using bind9) and Docker configs in the repo if you would like to use them. ",
+    "url": "/GeyserMC-Pages/geyser-connect/setup#dns-and-docker",
+    "relUrl": "/geyser-connect/setup#dns-and-docker"
+  },"72": {
+    "doc": "Setup",
+    "title": "Setup",
+    "content": "Download the latest build from Jenkins and put it into your plugins folder . ",
+    "url": "/GeyserMC-Pages/geyser-addons/setup#setup",
+    "relUrl": "/geyser-addons/setup#setup"
+  },"73": {
+    "doc": "Setup",
+    "title": "Setup",
+    "content": "– THIS PAGE IS A DRAFT – . ",
+    "url": "/GeyserMC-Pages/geyser-addons/setup",
+    "relUrl": "/geyser-addons/setup"
+  },"74": {
+    "doc": "Setup",
+    "title": "Setup",
+    "content": " ",
+    "url": "/GeyserMC-Pages/floodgate/setup",
+    "relUrl": "/floodgate/setup"
+  },"75": {
+    "doc": "Setup",
+    "title": "Setting Up",
+    "content": "NOTE: Floodgate does not replace the Geyser jar. If you are running a plugin version of Geyser, you still MUST have Geyser installed. Any reference to Spigot here also refers to compatible server softwares such as Paper. Plugin Setup (You have Geyser and Floodgate on the same server) . For multi-server setups: you only are required to install Floodgate on the BungeeCord or Velocity instance unless you want to use the Floodgate API on the other servers - see below for the installation process. If using Velocity: Set player-info-forwarding-mode to LEGACY in velocity.toml . | Download the Floodgate plugin from here and add it to your plugins folder. | Change the auth-type in the Geyser config to floodgate. | Restart/start up the server. | . Standalone Setup (Geyser and Floodgate are in separate places) . | Download the Floodgate plugin from here and add it to your plugins folder. | Run the server with Floodgate. | Copy the public-key.pem file in the Floodgate config folder to the same directory as Geyser (standalone) or Geyser’s config folder (plugin versions). DO NOT DISTRIBUTE THIS KEY TO ANYBODY! This key is what allows for Bedrock accounts to bypass the Java Edition authentication, and if anyone gets ahold of this, they can wreak havoc on your server. | Change the auth-type in the Geyser config to floodgate. | . Running Floodgate on Spigot servers behind BungeeCord or Velocity . This is only needed when you want to use the Floodgate API on your Spigot server(s). | Download the Floodgate plugin from here and install it as a plugin on both BungeeCord/Velocity and the Spigot server(s). | Enable ip_forwarding in your BungeeCord config.yml if using BungeeCord | Set player-info-forwarding-mode to LEGACY in velocity.toml if using Velocity | Set bungeecord to true in your spigot.yml | Start the proxy server. | Edit the Floodgate config on your proxy server and set send-floodgate-data to true. | Copy both key files in the Floodgate config folder to Spigot Floodgate’s config folder. DO NOT DISTRIBUTE THIS KEY TO ANYBODY! This key is what allows for Bedrock accounts to bypass the Java Edition authentication, and if anyone gets ahold of this, they can wreak havoc on your server. | Restart the Spigot servers and proxy server. | . ",
+    "url": "/GeyserMC-Pages/floodgate/setup#setting-up",
+    "relUrl": "/floodgate/setup#setting-up"
+  },"76": {
+    "doc": "Creating a Startup Script",
+    "title": "Creating a Startup Script",
+    "content": "In order for this to work, you MUST have Java 8 installed! . Once you have downloaded and placed Geyser into its own folder, you will need to create a startup script; similar to how you’d run a Bukkit server. Windows . | Create a new text file in the same location as the Geyser jar file, and call it run.bat. Open this with a text editor (preferably Notepad++), and insert the text below: @echo off java -Xms1024M -jar Geyser.jar . | Double-click the run.bat, and Geyser should start up. Geyser will generate all the needed files. | . macOS . | Create a text file called run.command, and open it with a text editor such as TextEdit or TextMate. Type the text below into the run.command file: #!/bin/bash cd \"$( dirname \"$0\" )\" java -Xms1024M -jar Geyser.jar . | Open Terminal, and type in chmod a+x (Do NOT press return!), and drag your run.command file into the Terminal. | Press return on your keyboard, and Geyser will start up. Geyser will generate all the needed files. | . Linux . | Create a file called run.sh, and open it with a text editor. Type the text below into your run.sh file: #!/bin/sh cd \"$( dirname \"$0\" )\" java -Xms1024M -jar Geyser.jar . | In your default terminal application, make the file executable by running chmod +x ~(dir)/run.sh where dir is the name of the folder Geyser is in, or by changing the file permissions; | Open your default terminal application, and type ./run.sh to run Geyser. Geyser will generate all the needed files. | . ",
+    "url": "/GeyserMC-Pages/geyser/startup",
+    "relUrl": "/geyser/startup"
+  },"77": {
+    "doc": "Tools",
+    "title": "Tools",
+    "content": " ",
+    "url": "/GeyserMC-Pages/development/tools",
+    "relUrl": "/development/tools"
+  },"78": {
+    "doc": "Tools",
+    "title": "Lombok",
+    "content": "If you’re using an IDE for editing any of the GeyserMC projects you will most likely need to install Project Lombok plugin as it is used to generate a bunch of handy functions. You can edit without it but you may get missing functions and or other issues displayed in your IDE. Please see the IDE section on their site for the supported plugins and install methods https://projectlombok.org/setup/overview. ",
+    "url": "/GeyserMC-Pages/development/tools#lombok",
+    "relUrl": "/development/tools#lombok"
+  },"79": {
+    "doc": "Tools",
+    "title": "wiki.vg",
+    "content": "For a full rundown of the Java Edition protocol, see here. ",
+    "url": "/GeyserMC-Pages/development/tools#wikivg",
+    "relUrl": "/development/tools#wikivg"
+  },"80": {
+    "doc": "Tools",
+    "title": "wiki.vg (Bedrock)",
+    "content": "The Bedrock Edition protocol is documented here, but it’s currently incomplete so only use it as a reference. ",
+    "url": "/GeyserMC-Pages/development/tools#wikivg-bedrock",
+    "relUrl": "/development/tools#wikivg-bedrock"
+  },"81": {
+    "doc": "Tools",
+    "title": "ProxyPass",
+    "content": "ProxyPass is a tool for intercepting packets between a Bedrock server and client developed by the NukkitX team. It can be found here and the vanilla Bedrock server can be found here. ",
+    "url": "/GeyserMC-Pages/development/tools#proxypass",
+    "relUrl": "/development/tools#proxypass"
+  },"82": {
+    "doc": "Tools",
+    "title": "MCC Toolchest",
+    "content": "MCC Toolchest is a tool for viewing and editing NBT data for Bedrock edition, this allows you to see data as it is stored in Bedrock. You can download it from here. ",
+    "url": "/GeyserMC-Pages/development/tools#mcc-toolchest",
+    "relUrl": "/development/tools#mcc-toolchest"
+  },"83": {
+    "doc": "Tools",
+    "title": "NBTExplorer",
+    "content": "NBTExplorer is a tool for viewing and editing NBT data for Java edition, this allows you to see data as it is stored in Java edition. You can download it from here. ",
+    "url": "/GeyserMC-Pages/development/tools#nbtexplorer",
+    "relUrl": "/development/tools#nbtexplorer"
+  },"84": {
+    "doc": "Tools",
+    "title": "pakkit",
+    "content": "pakkit is a GUI based tool for intercepting packets between a Java edition server and client developed by our own circuit10/Heath123 built using Electron. It also has experimental support for Bedrock Edition as a friendlier GUI wrapper for ProxyPass. You can download it from here under releases, or clone from GitHub for the latest version. It’s currently WIP, so expect bugs. ",
+    "url": "/GeyserMC-Pages/development/tools#pakkit",
+    "relUrl": "/development/tools#pakkit"
+  },"85": {
+    "doc": "Videos",
+    "title": "Setup Videos",
+    "content": "Setup tutorials in a variety of languages. ",
+    "url": "/GeyserMC-Pages/geyser/videos#setup-videos",
+    "relUrl": "/geyser/videos#setup-videos"
+  },"86": {
+    "doc": "Videos",
+    "title": "English",
+    "content": "Join Minecraft Java Servers From Bedrock Edition by TehPiggeh . Connect to Java servers from Bedrock Edition! | GeyserMC Proxy Tutorial by raimuakuna . How to play Java Servers in Minecraft Bedrock! by PatarHD . How to connect Bedrock players to Java servers Part One. by Casper . ",
+    "url": "/GeyserMC-Pages/geyser/videos#english",
+    "relUrl": "/geyser/videos#english"
+  },"87": {
+    "doc": "Videos",
+    "title": "Russian",
+    "content": "ЗАШЕЛ НА ХАЙПИКСЕЛЬ С МКПЕ? ЧИТЕРСКИЙ КОНФИГ! by TOWUK . ",
+    "url": "/GeyserMC-Pages/geyser/videos#russian",
+    "relUrl": "/geyser/videos#russian"
+  },"88": {
+    "doc": "Videos",
+    "title": "Videos",
+    "content": " ",
+    "url": "/GeyserMC-Pages/geyser/videos",
+    "relUrl": "/geyser/videos"
+  }
+}
